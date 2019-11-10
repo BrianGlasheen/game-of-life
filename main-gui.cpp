@@ -13,7 +13,7 @@ void makeBoard(string board[20][20]);
 int getNeighbors(string board[20][20], int x, int y);
 void step(string board[20][20]);
 void drawBoard(string board[20][20], HDC hdc);
-void draw(HDC hdc);
+void drive(HDC hdc);
 
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdshow)
@@ -57,7 +57,7 @@ LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
     {
     case WM_PAINT:
         hdc = BeginPaint(hWnd, &ps);
-        draw(hdc);
+        drive(hdc);
         EndPaint(hWnd, &ps);
         return 0;
     case WM_DESTROY:
@@ -69,7 +69,7 @@ LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
     return 0;
 }
 
-void draw(HDC hdc)
+void drive(HDC hdc)
 {
     const int iterations = 125;
     const int sleep = 50; // time in ms between each update
